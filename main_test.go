@@ -9,6 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// Test that the app on / will return Hello World and 200 code
 func TestRoot(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 

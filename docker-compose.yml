@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  go-webapp:
+    image: go-webapp:v1.0.0
+    environment:
+      - GIN_MODE=release
+    ports:
+      - 80:8080
+    deploy:
+        resources:
+          limits:
+            cpus: '1'
+            memory: 512M
+          reservations:
+            cpus: '0.1'
+            memory: 128M
