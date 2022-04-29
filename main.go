@@ -1,7 +1,13 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"os"
 
+	"github.com/gin-gonic/gin"
+)
+
+// Setup Gin Router
 func setupRouter() *gin.Engine {
 	r := gin.Default()
 	r.SetTrustedProxies(nil)
@@ -14,6 +20,11 @@ func setupRouter() *gin.Engine {
 }
 
 func main() {
+	appPort, isSet := os.LookupEnv("APP_PORT")
+	if !isSet {
+		appPort = "8080"
+	}
+
 	r := setupRouter()
-	r.Run("0.0.0.0:8080")
+	r.Run(fmt.Sprintf("0.0.0.0:%s", appPort))
 }
