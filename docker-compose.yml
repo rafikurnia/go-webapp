@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  go-webapp:
+    image: ${APP_NAME}:${VERSION}
+    env_file:
+      - config.env
+    ports:
+      - ${HOST_PORT}:${APP_PORT}
+    deploy:
+        resources:
+          limits:
+            cpus: ${CPU_LIMIT}
+            memory: ${MEM_LIMIT}
+          reservations:
+            cpus: ${CPU_RESERVED}
+            memory: ${MEM_RESERVED}
