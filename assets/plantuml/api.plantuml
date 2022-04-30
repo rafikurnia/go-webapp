@@ -1,0 +1,23 @@
+@startuml api
+
+namespace api {
+    class api << (S,Aquamarine) >> {
+        - getAll(c *gin.Context, resources string)
+        - getById(c *gin.Context, resources string)
+        - create(c *gin.Context, resources string)
+        - deleteById(c *gin.Context, resources string)
+        - updateById(c *gin.Context, resources string)
+
+    }
+    class contacts << (S,Aquamarine) >> {
+        - getAll(ctx *gin.Context)
+        - getById(ctx *gin.Context)
+        - create(ctx *gin.Context)
+        - deleteById(ctx *gin.Context)
+        - updateById(ctx *gin.Context)
+
+    }
+}
+"api.api" *-- "api.contacts"
+
+@enduml

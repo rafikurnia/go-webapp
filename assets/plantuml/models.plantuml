@@ -1,0 +1,45 @@
+@startuml models
+
+namespace models {
+    interface contactLinker  {
+        + Init() error
+        + GetAll() (*[]contact, error)
+        + GetById(id uint) (*contact, error)
+        + Create(data *contact) (*contact, error)
+        + DeleteById(id uint) error
+        + UpdateById(id uint, data *contact) (*contact, error)
+
+    }
+    class contactModel << (S,Aquamarine) >> {
+        + DB *gorm.DB
+
+        + Init() error
+        + GetAll() (*[]contact, error)
+        + GetById(id uint) (*contact, error)
+        + Create(data *contact) (*contact, error)
+        + DeleteById(id uint) error
+        + UpdateById(id uint, data *contact) (*contact, error)
+
+    }
+    class mockContactModel << (S,Aquamarine) >> {
+        - contacts []contact
+
+        + Init() error
+        + GetAll() (*[]contact, error)
+        + GetById(id uint) (*contact, error)
+        + Create(data *contact) (*contact, error)
+        + DeleteById(id uint) error
+        + UpdateById(id uint, data *contact) (*contact, error)
+
+    }
+    class models << (S,Aquamarine) >> {
+        + Contacts contactLinker
+
+    }
+}
+
+"models.models" -d-> "models.contactLinker"
+"models.contactLinker" <|-- "models.contactModel"
+"models.contactLinker" <|-- "models.mockContactModel"
+
+@enduml
