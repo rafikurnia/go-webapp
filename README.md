@@ -116,7 +116,7 @@ Then, re run the application using `make compose-up`.
 
 To roll back to the previous version, make sure that the docker image of the previous version is
 accessible and defined with the correct tag. Afterward, you need to only replace the tag information
-in [docker-compose.yml](./docker-compose.yml) file. Afterward, re run the application using
+in [docker-compose.yml](./docker-compose.yml#L12) file. Afterward, re run the application using
 `make compose-up`.
 
 
@@ -176,8 +176,8 @@ make test
 ## API resources
 
 The application supports only one resource, i.e., contacts. However, a composition can be implemented
-on the code increase code reusability. Therefore, should we need to add more resources in the future,
-the development will be faster.
+on the code to increase code reusability. Therefore, should we need to add more resources in the
+future, the development will be faster.
 
 ![api](./assets/figures/uml_api.svg)
 

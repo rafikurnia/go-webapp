@@ -48,9 +48,9 @@ docker-test: ## Test app on docker
 compose-up: docker-build-ne ## Build the image if not exist and start containers using docker-compose
 	cp nginx.conf.template nginx.conf
 
-	sed -i .bak 's/APP_NAME/$(APP_NAME)/g' nginx.conf
-	sed -i .bak 's/APP_PORT/$(APP_PORT)/g' nginx.conf
-	sed -i .bak 's/HOST_PORT/$(HOST_PORT)/g' nginx.conf
+	sed -i ".bak" 's/APP_NAME/$(APP_NAME)/g' nginx.conf
+	sed -i ".bak" 's/APP_PORT/$(APP_PORT)/g' nginx.conf
+	sed -i ".bak" 's/HOST_PORT/$(HOST_PORT)/g' nginx.conf
 
 	rm nginx.conf.bak
 
