@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"net/http"
@@ -13,7 +13,7 @@ import (
 func TestRoot(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 
-	r := setupRouter()
+	r := getRouterForTest()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/", nil)
