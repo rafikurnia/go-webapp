@@ -22,7 +22,7 @@ go-run: ## Run Go code
 	go run .
 
 go-rm: ## Delete the app binary file
-	if [ ! -z "$(shell ls $(APP_NAME))" ]; then rm ./$(APP_NAME); fi
+	rm -f ./$(APP_NAME)
 
 
 # Docker
@@ -48,11 +48,11 @@ docker-test: ## Test app on docker
 compose-up: docker-build-ne ## Build the image if not exist and start containers using docker-compose
 	cp nginx.conf.template nginx.conf
 
-	sed -i ".bak" 's/APP_NAME/$(APP_NAME)/g' nginx.conf
-	sed -i ".bak" 's/APP_PORT/$(APP_PORT)/g' nginx.conf
-	sed -i ".bak" 's/HOST_PORT/$(HOST_PORT)/g' nginx.conf
+	sed -i -e 's/APP_NAME/$(APP_NAME)/g' nginx.conf
+	sed -i -e 's/APP_PORT/$(APP_PORT)/g' nginx.conf
+	sed -i -e 's/HOST_PORT/$(HOST_PORT)/g' nginx.conf
 
-	rm nginx.conf.bak
+	rm -f nginx.conf-e
 
 	docker-compose up --detach
 
