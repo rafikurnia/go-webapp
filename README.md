@@ -109,7 +109,9 @@ You can invoke any of the command above by calling `make <target>`.
 ## Horizontal Scaling
 
 The horizontal scaling can be done by modifying the value of NUMBER_OF_REPLICAS in the config file.
-Then, re run the application using `make compose-up`.
+Then, re run the application using `make compose-up`. The traffic will received from users and
+forwarded to the replicated application containers by NGINX, as illustrated in the diagram below:
+![arch](./assets/figures/diagram.png)
 
 
 ## Rolling back
