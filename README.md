@@ -106,6 +106,20 @@ actions. Table below shows a list of available makefile targets and their descri
 You can invoke any of the command above by calling `make <target>`.
 
 
+## Horizontal Scaling
+
+The horizontal scaling can be done by modifying the value of NUMBER_OF_REPLICAS in the config file.
+Then, re run the application using `make compose-up`.
+
+
+## Rolling back
+
+To roll back to the previous version, make sure that the docker image of the previous version is
+accessible and defined with the correct tag. Afterward, you need to only replace the tag information
+in [docker-compose.yml](./docker-compose.yml) file. Afterward, re run the application using
+`make compose-up`.
+
+
 ## Table schema
 
 The picture below shows table schema:
@@ -134,6 +148,7 @@ To run the test locally on your machine, you can invoke the following command:
 make go-test
 ```
 
+
 ## Running test on Docker
 
 Although it is advantageous to have a mock database for the test, we may miss something during the
@@ -146,6 +161,16 @@ make docker-test
 
 Both local and Docker tests are included and performed in the GitHub action workflow
 [![Go](https://github.com/rafikurnia/go-webapp/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/rafikurnia/go-webapp/actions/workflows/go.yml)
+
+
+## Running test CRUD using scripts
+
+To perform CRUD tests, it is possible through scripts located in [./scripts](./scripts/) directory.
+To execute them all together, you can run the following command:
+
+```bash
+make test
+```
 
 
 ## API resources
